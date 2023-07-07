@@ -1,23 +1,21 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffe4b5;
-    color: #333;
+    background-color: #4a90e2; /* 蓝色背景 */
+    color: #ffffff; /* 白色文字 */
+    text-align: center; /* 文字居中 */
 }
 
 header {
-    text-align: center;
-    background-color: #ffa07a;
     padding: 20px 0;
 }
 
 nav {
-    text-align: center;
     margin: 40px 0;
 }
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff; /* 白色链接文字 */
     margin: 0 20px;
     font-size: 20px;
 }
