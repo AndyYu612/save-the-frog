@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>商品选购</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>商品选购</h1>
+    </header>
+    <div id="table-container">
+        <!-- 表格将在这里呈现 -->
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var googleSheetUrl = "https://docs.google.com/spreadsheets/d/1tf5IsMqaGlB1iAh4c2XWdr04LdeJc4wQhN9YuWohg6I/gviz/tq?tqx=out:json";
+            
+            fetch(googleSheetUrl)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substr(47).slice(0, -2));
+                    var table = document.createElement("table");
+                    var rows = json.table.rows;
+                    
+                    rows.forEach(row => {
+                        var tr = document.createElement("tr");
+                        row.c.forEach(cell => {
+                            var td = document.createElement("td");
+                            td.innerText = cell.v;
+                            tr.appendChild(td);
+                        });
+                        table.appendChild(tr);
+                    });
+                    
+                    document.getElementById("table-container").appendChild(table);
+                });
+        });
+    </script>
+</body>
+</html>
