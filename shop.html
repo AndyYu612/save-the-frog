@@ -23,15 +23,43 @@
                     var table = document.createElement("table");
                     var rows = json.table.rows;
                     
-                    rows.forEach(row => {
-                        var tr = document.createElement("tr");
-                        row.c.forEach(cell => {
-                            var td = document.createElement("td");
-                            td.innerText = cell.v;
-                            tr.appendChild(td);
-                        });
-                        table.appendChild(tr);
+                    // 创建表头
+                    var thead = document.createElement("thead");
+                    var headerRow = document.createElement("tr");
+                    ["商品图样", "商品属性", "商品描述"].forEach(header => {
+                        var th = document.createElement("th");
+                        th.innerText = header;
+                        headerRow.appendChild(th);
                     });
+                    thead.appendChild(headerRow);
+                    table.appendChild(thead);
+                    
+                    // 创建表格内容
+                    var tbody = document.createElement("tbody");
+                    for (var i = 1; i <= 10; i++) { // 10张图片
+                        var tr = document.createElement("tr");
+                        
+                        // 商品图样
+                        var imgTd = document.createElement("td");
+                        var img = document.createElement("img");
+                        img.src = rows[i].c[0].v; // 图片URL
+                        img.style.width = "100px";
+                        imgTd.appendChild(img);
+                        
+                        // 商品属性
+                        var attrTd = document.createElement("td");
+                        attrTd.innerText = rows[1].c[9].v; // 商品属性 (J2)
+                        
+                        // 商品描述
+                        var descTd = document.createElement("td");
+                        descTd.innerText = rows[1].c[10].v; // 商品描述 (K2)
+                        
+                        tr.appendChild(imgTd);
+                        tr.appendChild(attrTd);
+                        tr.appendChild(descTd);
+                        tbody.appendChild(tr);
+                    }
+                    table.appendChild(tbody);
                     
                     document.getElementById("table-container").appendChild(table);
                 });
