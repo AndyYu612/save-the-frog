@@ -19,3 +19,16 @@ nav a {
     margin: 0 20px;
     font-size: 20px;
 }
+
+/* 新增的表格样式 */
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: center;
+}
